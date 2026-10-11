@@ -1,0 +1,186 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Hạt Núi</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600&family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700&family=JetBrains+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="style.css">
+
+</head>
+<body>
+<header class="top">
+  <div class="wrap">
+    <a class="logo" href="#top" aria-label="Hạt Núi, về đầu trang">
+      <svg viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" rx="8" fill="#13202B"/><path d="M5 23l8-12 5 7 3-4 6 9z" fill="#F2F5F3"/><circle cx="22" cy="9" r="3" fill="#EF665C"/></svg>
+      Hạt Núi
+    </a>
+    <nav class="nav" aria-label="Điều hướng chính">
+      <a href="#san-pham">Sản phẩm</a><a href="#cach-rang">Cách rang</a><a href="#hoi-dap">Hỏi đáp</a>
+    </nav>
+    <div class="top-actions">
+      <button class="icon-btn" id="themeBtn" type="button" aria-label="Đổi giao diện sáng tối">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="8"/><path d="M12 4v16" /><path d="M12 4a8 8 0 0 1 0 16z" fill="currentColor"/></svg>
+      </button>
+      <button class="icon-btn" id="cartBtn" type="button" aria-label="Mở giỏ hàng">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 8h14l-1.2 11.2a1 1 0 0 1-1 .8H7.2a1 1 0 0 1-1-.8z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/></svg>
+        <span class="count" id="cartCount" hidden>0</span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main id="top">
+  <section class="hero">
+    <div class="wrap">
+      <div>
+        <span class="mono">Rang mẻ nhỏ · Hạt Việt Nam</span>
+        <h1>Cà phê rang trong tuần, giao đến tận cửa.</h1>
+        <p class="lead">Hạt Arabica từ Cầu Đất và Sơn La, Robusta từ Tây Nguyên. Mỗi túi ghi rõ vùng trồng, cách sơ chế và mức rang để bạn chọn đúng vị cho cách pha của mình.</p>
+        <div class="roast-chip"><i></i><span>Mẻ rang tiếp theo: <b id="nextRoast">…</b></span></div>
+        <div class="cta-row">
+          <a class="btn btn-primary" href="#san-pham">Chọn hạt</a>
+          <a class="btn" href="#cach-rang">Cách chúng tôi rang</a>
+        </div>
+      </div>
+      <div class="hero-art" id="heroArt">
+        <div class="stamp"><span class="mono">Cầu Đất · 1.500 m</span><span class="mono">Rang vừa nhạt</span></div>
+      </div>
+    </div>
+    <div class="wrap">
+      <div class="perks" style="margin-top:32px">
+        <div class="perk"><b>Rang thứ Ba và thứ Sáu</b><span>Đặt trước 14:00 để vào mẻ gần nhất.</span></div>
+        <div class="perk"><b>Miễn phí giao từ 400.000 ₫</b><span>Dưới mức này phí giao là 30.000 ₫.</span></div>
+        <div class="perk"><b>Không hợp vị thì đổi</b><span>Báo trong 7 ngày để đổi sang loại khác.</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="shop" id="san-pham">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2>Cửa hàng</h2>
+        <span class="mono">Giá đã gồm VAT</span>
+      </div>
+      <div class="toolbar">
+        <label class="field-in" for="q">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="6.5"/><path d="M16 16l4 4"/></svg>
+          <input id="q" type="search" placeholder="Tìm theo tên, vùng trồng hoặc hương vị" autocomplete="off">
+        </label>
+        <select id="sort" aria-label="Sắp xếp sản phẩm">
+          <option value="featured">Nổi bật</option>
+          <option value="asc">Giá thấp đến cao</option>
+          <option value="desc">Giá cao đến thấp</option>
+          <option value="name">Tên A đến Z</option>
+        </select>
+      </div>
+      <div class="chips" id="chips" role="group" aria-label="Lọc theo nhóm"></div>
+      <p class="result-line" id="resultLine" aria-live="polite"></p>
+      <div class="grid" id="grid"></div>
+    </div>
+  </section>
+
+  <section class="band" id="cach-rang">
+    <div class="wrap">
+      <h2 style="font-size:clamp(1.7rem,4vw,2.4rem)">Từ hạt xanh đến túi cà phê</h2>
+      <ol class="steps">
+        <li><b>Chọn hạt</b><span>Hạt xanh được nhặt tay, bỏ hạt lỗi và hạt non trước khi rang.</span></li>
+        <li><b>Rang mẻ nhỏ</b><span>Mỗi mẻ vài ký, rang vào thứ Ba và thứ Sáu để hạt luôn mới.</span></li>
+        <li><b>Nghỉ hạt</b><span>Hạt nghỉ một ngày cho khí CO₂ thoát bớt, rồi đóng túi có van một chiều.</span></li>
+        <li><b>Giao hàng</b><span>Đơn được gửi ngay sau khi đóng túi, thường đến nơi trong 1 đến 3 ngày.</span></li>
+      </ol>
+      <h3 style="margin-top:44px;font-size:1.4rem">Chọn mức rang theo cách pha</h3>
+      <div class="table-scroll">
+        <table>
+          <thead><tr><th>Mức rang</th><th>Vị chính</th><th>Hợp với</th><th>Thử với</th></tr></thead>
+          <tbody>
+            <tr><td>Nhạt</td><td>Chua thanh, hương hoa quả</td><td>V60, Aeropress, cold brew</td><td>Cầu Đất Arabica Honey</td></tr>
+            <tr><td>Vừa</td><td>Cân bằng, ngọt hậu</td><td>Espresso, moka, phin</td><td>Sơn La Catimor, Espresso Blend Số 7, Culi</td></tr>
+            <tr><td>Đậm</td><td>Đắng đậm, body dày</td><td>Phin, cà phê sữa</td><td>Robusta Đắk Lắk, Phin Sài Gòn Blend</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <section class="band" id="hoi-dap" style="padding-top:8px">
+    <div class="wrap">
+      <h2 style="font-size:clamp(1.7rem,4vw,2.4rem)">Hỏi đáp</h2>
+      <div class="faq">
+        <details><summary>Bao lâu thì tôi nhận được hàng?</summary><p>Cà phê được rang theo mẻ vào thứ Ba và thứ Sáu, gửi vào ngày sau đó và thường đến trong 1 đến 3 ngày. Dụng cụ được gửi ngay khi có đơn. Ngày dự kiến hiện ở bước đặt hàng.</p></details>
+        <details><summary>Nên xay mức nào?</summary><p>Phin cần xay vừa, espresso xay mịn, V60 xay trung bình đến hơi thô, cold brew xay thô. Với cà phê hạt, bạn chọn kiểu xay ngay trong trang chi tiết sản phẩm. Nếu có máy xay riêng, hãy chọn nguyên hạt để giữ hương lâu hơn.</p></details>
+        <details><summary>Bảo quản cà phê như thế nào?</summary><p>Giữ túi kín, để nơi mát và tránh nắng. Cà phê ngon nhất trong 4 đến 6 tuần sau ngày rang. Không nên cất trong tủ lạnh vì hạt dễ hút ẩm và mùi.</p></details>
+        <details><summary>Tôi có thể dùng mã giảm giá nào?</summary><p>Thử HATNUI10 để giảm 10%, CHAOBAN để giảm 30.000 ₫ cho đơn từ 200.000 ₫, hoặc FREESHIP để miễn phí giao hàng. Nhập mã trong giỏ hàng.</p></details>
+        <details><summary>Nếu không hợp vị thì sao?</summary><p>Báo cho cửa hàng trong 7 ngày kể từ khi nhận, bạn sẽ được đổi sang một loại khác cùng giá trị. Túi đã mở vẫn được đổi một lần.</p></details>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div><b style="font-family:var(--display);color:var(--ink)">Hạt Núi</b><br>Cà phê rang mẻ nhỏ, hạt Việt Nam.</div>
+    <div>Đây là trang bán hàng mẫu. Đơn hàng đặt ở đây chưa được gửi đến cửa hàng thật.</div>
+  </div>
+</footer>
+
+<!-- Cart drawer -->
+<div class="scrim" id="scrim" hidden></div>
+<aside class="drawer" id="drawer" aria-hidden="true" aria-labelledby="drawerTitle">
+  <div class="drawer-head">
+    <h2 id="drawerTitle">Giỏ hàng</h2>
+    <button class="icon-btn" id="drawerClose" type="button" aria-label="Đóng">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg>
+    </button>
+  </div>
+
+  <div class="view" id="viewCart">
+    <div class="drawer-body" id="cartBody"></div>
+    <div class="drawer-foot" id="cartFoot"></div>
+  </div>
+
+  <div class="view" id="viewCheckout" hidden>
+    <div class="drawer-body">
+      <form class="form" id="checkoutForm" novalidate>
+        <div class="f" id="f-name"><label for="c-name">Họ và tên</label><input id="c-name" name="name" autocomplete="name"><p class="err" hidden></p></div>
+        <div class="f-row">
+          <div class="f" id="f-phone"><label for="c-phone">Số điện thoại</label><input id="c-phone" name="phone" inputmode="tel" autocomplete="tel" placeholder="09xx xxx xxx"><p class="err" hidden></p></div>
+          <div class="f" id="f-city"><label for="c-city">Tỉnh/Thành</label>
+            <select id="c-city" name="city"><option value="">Chọn</option><option>Hà Nội</option><option>TP. Hồ Chí Minh</option><option>Đà Nẵng</option><option>Hải Phòng</option><option>Cần Thơ</option><option>Lâm Đồng</option><option>Tỉnh/thành khác</option></select><p class="err" hidden></p></div>
+        </div>
+        <div class="f" id="f-addr"><label for="c-addr">Địa chỉ nhận hàng</label><input id="c-addr" name="addr" autocomplete="street-address" placeholder="Số nhà, đường, phường/xã, quận/huyện"><p class="err" hidden></p></div>
+        <div class="f"><label for="c-note">Ghi chú (không bắt buộc)</label><textarea id="c-note" name="note" placeholder="Ví dụ: gọi trước khi giao"></textarea></div>
+        <fieldset>
+          <legend style="font-weight:600;font-size:.88rem;margin-bottom:6px">Thanh toán</legend>
+          <label class="radio"><input type="radio" name="pay" value="Thanh toán khi nhận hàng" checked><span>Thanh toán khi nhận hàng (COD)<small>Trả tiền mặt cho người giao.</small></span></label>
+          <label class="radio"><input type="radio" name="pay" value="Chuyển khoản ngân hàng"><span>Chuyển khoản ngân hàng<small>Cửa hàng gửi thông tin chuyển khoản qua số điện thoại của bạn.</small></span></label>
+        </fieldset>
+        <p class="note">Trang mẫu không thu thông tin thẻ và không gửi đơn đi đâu.</p>
+      </form>
+    </div>
+    <div class="drawer-foot">
+      <div class="sum" id="coSum"></div>
+      <button class="btn btn-primary" type="submit" form="checkoutForm" style="width:100%">Đặt hàng</button>
+      <button class="btn" type="button" id="backToCart" style="width:100%">Quay lại giỏ hàng</button>
+    </div>
+  </div>
+
+  <div class="view" id="viewDone" hidden>
+    <div class="drawer-body" id="doneBody"></div>
+  </div>
+</aside>
+
+<!-- Product modal -->
+<div class="modal" id="modal" hidden>
+  <div class="scrim" id="modalScrim"></div>
+  <div class="panel" id="panel" role="dialog" aria-modal="true" aria-labelledby="mTitle"></div>
+</div>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script src="script.js"></script>
+
+</body>
+</html>
